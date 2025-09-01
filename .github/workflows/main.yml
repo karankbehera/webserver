@@ -1,0 +1,18 @@
+name: Deploy Website (Self-hosted)
+
+on:
+  push:
+    branches:
+      - master   # runs when PRs are merged into main
+
+jobs:
+  deploy:
+    runs-on: self-hosted   # EC2 will execute this job
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy website files
+        run: |
+          cp -r * /var/www/html/
+          sudo systemctl restart nginx
