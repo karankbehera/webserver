@@ -11,8 +11,3 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Deploy website files
-        run: |
-          cp -r * /var/www/html/
-          sudo systemctl restart nginx
